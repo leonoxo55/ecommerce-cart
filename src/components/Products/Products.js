@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import Loading from '../Loading';
+import Product from '../Product';
 
 import './Products.scss';
 
@@ -20,11 +21,3 @@ export default function Products (props) {
         </Container>
     );
 }
-
-function Product (props) {
-    const {product} = props;
-
-
-    return('algo');
-}
-    
