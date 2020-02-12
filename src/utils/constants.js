@@ -1,0 +1,1 @@
+export const URL_API_Products = 'https://api.myjson.com/bins/wdaqs'; //http://myjson.com/wdaqs
