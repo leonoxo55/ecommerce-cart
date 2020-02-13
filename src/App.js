@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TopMenu from './components/TopMenu';
 import useFecth from './hooks/useFetch';
 import { URL_API_Products, LOCALSTORAGE } from './utils/constants';
@@ -10,6 +10,21 @@ function App() {
 
   const result = useFecth( URL_API_Products);
   const [productCart, setProductCart] = useState([]);
+
+  useEffect(() => {
+    getProductsCart();
+  },[]);
+
+  const getProductsCart = () => {
+    const idProducts = localStorage.getItem(LOCALSTORAGE.PRODUCTS_CART);
+
+    if(idProducts){
+      const idsProductsSplit = idProducts.split(',');
+      setProductCart(idsProductsSplit);
+    }else{
+      setProductCart([]);
+    }
+  }
 
   const addProductCart = (id, name) => {
       const idsProducts = productCart;
