@@ -5,7 +5,7 @@ import { BASE_PATH } from '../../utils/constants';
 import './Product.scss';
 
 export default function Product (props) {
-    const {product} = props
+    const {product, addProductCart} = props
 
 
     return (
@@ -16,7 +16,9 @@ export default function Product (props) {
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>{product.extraInfo}</Card.Text>
                     <Card.Text>{product.price} CLP/ Unidad</Card.Text>
-                    <Button>Añadir al carrito</Button>
+                    <Button onClick={() => {
+                        addProductCart(product.id, product.name,)
+                    }}>Añadir al carrito</Button>
                 </Card.Body>
             </Card>
         </Col>
