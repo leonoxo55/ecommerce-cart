@@ -31,6 +31,7 @@ function App() {
       idsProducts.push(id);
       setProductCart(idsProducts);
       localStorage.setItem(LOCALSTORAGE.PRODUCTS_CART, idsProducts);
+      getProductsCart()
 
       toast.success(`${name} añadido al carrito correctamente`);
   }
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <div >
-      <TopMenu />
+      <TopMenu productCart={productCart} />
       <Products products={result} addProductCart={addProductCart} />
       <ToastContainer position='bottom-left' autoClose={5000} hideProgressBar newestOnTop closeOnClick={false} rtl={false} pauseOnVisibilityChange={false} draggable pauseOnHover={false} />
     </div>
