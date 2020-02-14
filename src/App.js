@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 import TopMenu from './components/TopMenu';
+import Products from './components/Products';
 import useFecth from './hooks/useFetch';
 import { URL_API_Products, LOCALSTORAGE } from './utils/constants';
-import Products from './components/Products';
-import { ToastContainer, toast } from 'react-toastify';
-
 
 function App() {
 
-  const result = useFecth( URL_API_Products);
-  const [productCart, setProductCart] = useState([]);
+  const products = useFecth( URL_API_Products);
+  const [productsCart, setProductsCart] = useState([]);
 
   useEffect(() => {
     getProductsCart();
@@ -20,27 +19,28 @@ function App() {
 
     if(idProducts){
       const idsProductsSplit = idProducts.split(',');
-      setProductCart(idsProductsSplit);
+      setProductsCart(idsProductsSplit);
     }else{
-      setProductCart([]);
+      setProductsCart([]);
     }
+
+    
   }
 
   const addProductCart = (id, name) => {
-      const idsProducts = productCart;
+      const idsProducts = productsCart;
       idsProducts.push(id);
-      setProductCart(idsProducts);
+      setProductsCart(idsProducts);
       localStorage.setItem(LOCALSTORAGE.PRODUCTS_CART, idsProducts);
       getProductsCart()
 
       toast.success(`${name} añadido al carrito correctamente`);
   }
 
-
   return (
     <div >
-      <TopMenu getProductsCart={getProductsCart} productCart={productCart} />
-      <Products products={result} addProductCart={addProductCart} />
+      <TopMenu products={products} getProductsCart={getProductsCart} productsCart={productsCart} />
+      <Products products={products} addProductCart={addProductCart} />
       <ToastContainer position='bottom-left' autoClose={5000} hideProgressBar newestOnTop closeOnClick={false} rtl={false} pauseOnVisibilityChange={false} draggable pauseOnHover={false} />
     </div>
   );
