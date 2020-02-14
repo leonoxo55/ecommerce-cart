@@ -7,14 +7,14 @@ import './TopMenu.scss';
 
 export default function TopMenu( props) {
 
-    const { productCart } = props
+    const { productCart, getProductsCart } = props
 
     return(
         <Navbar bg='dark' variant='dark' className='top-menu' >
             <Container>
                 <BrandNav />
                 {/*Menu*/ }
-                <Cart productCart={productCart} />
+                <Cart getProductsCart={getProductsCart} productCart={productCart} />
             </Container>
         </Navbar>
     );
