@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+// Estilos globales para el contenido dinámico
+.dynamic-content {
+  // Permitir que los estilos del contenido dinámico se apliquen
+  ::ng-deep {
+    .modal-content {
+      font-family: 'Roboto', sans-serif;
+    }
+    
+    .hsp-lightbox-default-title,
+    .hsp-lightbox-default-subtitle {
+      font-family: 'Overpass', sans-serif;
+    }
+  }
+}
