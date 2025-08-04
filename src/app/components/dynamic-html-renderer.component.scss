@@ -1,0 +1,24 @@
+.dynamic-html-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.dynamic-content {
+  width: 100%;
+  min-height: 100px;
+  
+  // Asegurar que los estilos del contenido dinámico se apliquen correctamente
+  ::ng-deep {
+    * {
+      box-sizing: border-box;
+    }
+    
+    // Permitir que los estilos del contenido dinámico se apliquen
+    .modal-content,
+    .modal-body,
+    .modal-header {
+      font-family: inherit;
+    }
+  }
+}

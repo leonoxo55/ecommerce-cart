@@ -1,0 +1,55 @@
+<div class="demo-container">
+  <div class="controls">
+    <h2>Renderizador de HTML Dinámico - Demo</h2>
+    <div class="button-group">
+      <button (click)="loadSampleHtml()" class="btn btn-primary">
+        Cargar HTML de Ejemplo
+      </button>
+      <button (click)="loadCustomHtml()" class="btn btn-secondary">
+        Cargar HTML Personalizado
+      </button>
+      <button (click)="clearContent()" class="btn btn-danger">
+        Limpiar Contenido
+      </button>
+      <button (click)="updateContent()" class="btn btn-success">
+        Actualizar Contenido
+      </button>
+    </div>
+    
+    <div class="info-panel">
+      <h3>Información de Seguridad</h3>
+      <ul>
+        <li>✅ Scripts ejecutados en contexto seguro</li>
+        <li>✅ Lista blanca de funciones permitidas</li>
+        <li>✅ Sanitización de HTML automática</li>
+        <li>✅ Validación de patrones de código</li>
+      </ul>
+      
+      <h4>Funciones Permitidas:</h4>
+      <ul>
+        <li><code>llenarNombre()</code> - Llena el nombre del usuario</li>
+        <li><code>MarcaResultadoModal(resultado)</code> - Maneja la respuesta del modal</li>
+        <li><code>console.log()</code> - Para debugging</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="renderer-container">
+    <h3>Contenido Renderizado:</h3>
+    <app-dynamic-html-renderer 
+      [htmlContent]="currentHtml">
+    </app-dynamic-html-renderer>
+  </div>
+
+  <div class="examples-link">
+    <h3>Ver Más Ejemplos</h3>
+    <p>Explora diferentes casos de uso del renderizador:</p>
+    <button (click)="showExamples = !showExamples" class="btn btn-info">
+      {{ showExamples ? 'Ocultar' : 'Mostrar' }} Ejemplos
+    </button>
+  </div>
+
+  <div class="examples-container" *ngIf="showExamples">
+    <app-usage-example></app-usage-example>
+  </div>
+</div>
